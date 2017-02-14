@@ -5,7 +5,7 @@
     <title>Example 1</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="//css/style.css" rel="stylesheet">
     <script>
         function init() {
             $.ajax({
@@ -22,7 +22,7 @@
                 },
                 error: function(e) {
                     //called when there is an error
-                    console.log(e.message);
+                    console.log("Error" + e.message);
                 }
             });
         }
@@ -34,8 +34,7 @@
 
     </table>
 
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <!--<script src="demo.js"></script>-->
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
 </body>
 
 </html>
