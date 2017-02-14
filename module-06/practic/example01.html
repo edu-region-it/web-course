@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Example 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script>
+        function init() {
+            $.ajax({
+                crossDomain: true,
+                url: "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11",
+                type: "GET",
+                success: function(data) {
+                    //called when successful
+                    let str = "<table>";
+                    for (let item of data) {
+                        str += `<tr><td>${item.ccy}</td><td>${item.base_ccy}</td><td>${item.buy}</td><td>${item.sale}</td></tr>`;
+                    }
+                    $("#ajax-results").html(str + "</table>");
+                },
+                error: function(e) {
+                    //called when there is an error
+                    console.log(e.message);
+                }
+            });
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <table id="ajax-results">
+
+    </table>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <!--<script src="demo.js"></script>-->
+</body>
+
+</html>
