@@ -7,6 +7,7 @@ function analyse() {
     };
 
     let requestHeaders = new Headers();
+    requestHeaders.append("Ocp-Apim-Subscription-Key", "6391ac976e475fb2b0a749bf674361");
     requestHeaders.append("Content-Type", "application/json");
     requestHeaders.append("Accept", "application/json");
 
