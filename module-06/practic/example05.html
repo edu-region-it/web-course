@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script>
+        // generator
+        function* generator_function() {
+                var a = yield;
+                console.log('Val=' + a);
+                var b = yield a + 1;
+                console.log('Val=' + b);
+                var c = yield b + 2;
+            }
+            // generators are called like regular functions but return an iterator
+        var generator = generator_function();
+        console.log(generator.next(0).value);
+        console.log(generator.next(1).value);
+        console.log(generator.next(2).value);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

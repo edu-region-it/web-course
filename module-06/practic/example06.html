@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script>
+        // generator
+        function* genFunc() {
+            let url = "http://jsonplaceholder.typicode.com/posts";
+            var response1 = yield fetch(url + "/1");
+            var t1 = yield response1.json();
+            console.log(t1.title);
+            var response2 = yield fetch(url + "/2");
+            var t2 = yield response2.json();
+            console.log(t2.title);
+        }
+
+        function run(genFunc) {
+            const genObject = genFunc();
+
+            function iterate(iteration) {
+                if (iteration.done) {
+                    return Promise.resolve(iteration.value);
+                }
+                return Promise.resolve(iteration.value)
+                    .then(x => iterate(genObject.next(x)))
+                    .catch(x => iterate(genObject.throw(x)));
+            }
+            try {
+                return iterate(genObject.next());
+            } catch (ex) {
+                return Promise.reject(ex);
+            }
+        }
+        //run(genFunc).then(x => console.log(x));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
