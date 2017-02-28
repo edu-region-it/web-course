@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="helloWorldApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body ng-controller="firstController">
+
+    <div class="container">
+        <h1>AngularFundamentals</h1>
+        <h2>{{'Hello from AngularJS'}}</h2>
+        <pre>{{appName}}</pre>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script>
+        var helloWorldApp = angular.module('helloWorldApp', []);
+        helloWorldApp.constant('myConfig', {      
+            applicationName: 'My Angular JS App'    
+        });    
+        helloWorldApp.controller('firstController', [
+            '$scope', 'myConfig',
+            function($scope, myConfig) {        
+                $scope.appName = myConfig.applicationName;      
+            }    
+        ]);
+    </script>
+
+</body>
+
+</html>

@@ -4,7 +4,7 @@ function Stack() {
     this.push = push;
     this.pop = pop;
     this.peek = peek;
-    this.length=length;
+    this.length = length;
 }
 
 function push(element) {
@@ -16,14 +16,15 @@ function pop() {
 }
 
 function length() {
-    	return this.top;
+    return this.top;
 }
 
 function clear() {
-	delete this.dataStore;
-	this.dataStore = [];
-    	this.top = 0;
+    delete this.dataStore;
+    this.dataStore = [];
+    this.top = 0;
 }
+
 function peek() {
-	return this.dataStore[this.top-1];
+    return this.dataStore[this.top - 1];
 }
