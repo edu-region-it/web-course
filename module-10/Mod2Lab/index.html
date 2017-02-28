@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>Tony's Pizza</title>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body ng-controller="menuController">
+    <div class="container">
+        <h1>Tony's Pizza</h1>
+        <h2>{{'Menu'}}</h2>
+        <div>
+            <label><input type="radio" name="category" ng-click="changeMainDish({name:'Cheese Pizza',price:11.99})"/> Cheese Pizza</label>
+        </div>
+        <div>
+            <label><input type="radio" name="category" ng-click="changeMainDish({name:'Pepperoni Pizza',price:11.99})"/> Pepperoni Pizza</label>
+        </div>
+        <div>
+            <label><input type="radio" name="category" ng-click="changeMainDish({name:'Margherita  Pizza',price:11.99})"/> Margherita Pizza</label>
+        </div>
+        <div>
+            <label><input type="radio" name="category" ng-click="changeMainDish({name:'BBQ Chicken Pizza',price:11.99})"/> BBQ Chicken Pizza</label>
+        </div>
+        <div>
+            <label><input type="radio" name="category" ng-click="changeMainDish({name:'Combo Pizza',price:11.99})"/> Combo Pizza</label>
+        </div>
+
+        <div>
+            <h3>Selected Item</h3>
+            <pre>{{model.mainDish.name}}</pre>
+        </div>
+        <div>
+            <h3>Special Instuctions</h3>
+            <textarea class="form-control" ng-model="model.specialInstructions"></textarea>
+        </div>
+        <div>
+            <h3>Order Summary</h3>
+            <pre>{{model.mainDish.name}} {{model.mainDish.price}} - {{model.specialInstructions}}</pre>
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="./app/app.js"></script>
+    <script src="./app/menuController.js"></script>
+</body>
+
+</html>
