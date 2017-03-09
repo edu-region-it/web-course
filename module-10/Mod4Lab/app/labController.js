@@ -3,6 +3,7 @@ app.controller("labController", [
     function($scope, $timeout, $q, $http, gitHub) {
         $scope.model = {
             number: 0,
+            language: "javascript",
             result: "Ready"
         };
 
@@ -12,11 +13,19 @@ app.controller("labController", [
 
         function loadDetail(name) {
             // $scope.model.detail = null;
-            $scope.model.detail = gitHub.getDetail({ id: name });
+            $scope.model.detail = gitHub.getDetail({ org: $scope.model.language, id: name });
         }
 
-        function getRepos() {
-            $scope.model.repos = gitHub.getAll();
+        function getRepos(input) {
+            $scope.model.result = "Working...";
+            $scope.model.repos = gitHub.getAll({ org: $scope.model.language });
+            $scope.model.repos.$promise.then(function(result) {
+                $scope.model.repos = result;
+                $scope.model.result = "Ready";
+            }, function(result) {
+                $scope.model.repos = null;
+                $scope.model.result = "Error: " + result.status + " " + result.statusText;
+            });
         }
 
         function checkOddNumber(input) {
