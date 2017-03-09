@@ -18,8 +18,7 @@ app.controller("labController", [
 
         function getRepos(input) {
             $scope.model.result = "Working...";
-            $scope.model.repos = gitHub.getAll({ org: $scope.model.language });
-            $scope.model.repos.$promise.then(function(result) {
+            gitHub.getAll({ org: $scope.model.language }).$promise.then(function(result) {
                 $scope.model.repos = result;
                 $scope.model.result = "Ready";
             }, function(result) {
