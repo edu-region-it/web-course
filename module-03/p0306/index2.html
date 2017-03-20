@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Registration Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <form id="registration" method="post" action="http://region-it.azurewebsites.net/formdemo">
+        <fieldset>
+            <legend>Форма регистрации</legend>
+            <div>
+                <label for="full_name">ФИО</label>
+                <input id="full_name" name="full_name" type="text" required="required">
+            </div>
+            <div>
+                <label for="user_email">Email</label>
+                <input id="user_email" name="user_email" type="email">
+            </div>
+            <div>
+                <label for="phone">Номер телефона</label>
+                <input id="phone" name="phone" type="tel" pattern="\(\d{3,4}\) \d{2,3}-\d{2}-\d{2}">
+            </div>
+            <div>
+                <label for="dateofbirth">Дата рождения</label>
+                <input id="dateofbirth" name="dateofbirth" type="date" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Параметры доставки</legend>
+            <div>
+                <label for="address">Адрес</label>
+                <textarea id="address" name="address" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="postcode">Почтовый индекс</label>
+                <input id="postcode" name="postcode" type="text">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Предпочитаемый способ получения уведомлений</legend>
+            <div>
+                <input id="emailmessage" name="message" type="radio">
+                <label for="emailmessage">По Email</label>
+            </div>
+            <div>
+                <input id="phonemessage" name="message" type="radio">
+                <label for="phonemessage">По телефону</label>
+            </div>
+            <div>
+                <input id="nomessage" name="message" type="radio">
+                <label for="nomessage">Не уведомлять меня</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <button type="submit">Отправить данные</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>

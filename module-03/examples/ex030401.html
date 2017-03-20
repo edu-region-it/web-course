@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <form action="http://region-it.azurewebsites.net/FormDemo" method="POST">
+        <fieldset>
+            <legend>General Infomation</legend>
+            <input type="text" name="Name" autocomplete required="required" value="Sherlock Holmes" tabindex="3" />
+            <input type="text" name="Address" required value="Baker st., 221B" tabindex="4" />
+            <input type="text" name="Demo1" tabindex="1" />
+            <input type="text" name="Demo2" tabindex="2" />
+        </fieldset>
+
+        <fieldset>
+            <legend>Delivery Infomation</legend>
+            <input type="checkbox" name="Express">Use Express Service?
+            <input type="radio" name="city" value="Kiev">Kiev
+            <input type="radio" name="city" value="Moscow">Moscow
+        </fieldset>
+        <fieldset>
+            <input type="range" min=0 max=200>Range Demo
+            <input type="number" min=0 max=150 autofocus>Number Demo
+        </fieldset>
+
+        <input type="submit" value="Submit" />
+    </form>
+
+</body>
+
+</html>

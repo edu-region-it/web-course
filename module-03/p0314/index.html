@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+    <script>
+        var coordsPlaceHolder;
+
+        function init() {
+            coordsPlaceHolder = document.getElementById("coords");
+            demoMap = document.getElementById("demoMap");
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                coordsPlaceHolder.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            coordsPlaceHolder.innerHTML = "<br>Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+            var str = "http://static-maps.yandex.ru/1.x/?lang=ru-RU&ll=" +
+                position.coords.longitude + "," + position.coords.latitude +
+                "&z=13&l=map&size=450,450&pt=" +
+                position.coords.longitude + "," + position.coords.latitude +
+                ",pmgrm";
+            demoMapYandex.src = str;
+            str = "https://maps.googleapis.com/maps/api/staticmap?center=" +
+                position.coords.latitude + "," + position.coords.longitude +
+                "&zoom=12&size=450x450"
+            demoMapGoogle.src = str;
+            str = "http://dev.virtualearth.net/REST/V1/Imagery/Map/Road/" +
+                position.coords.latitude + "%2C" + position.coords.longitude +
+                "/10?mapSize=450,450&format=png&key=" +
+                "Aq28qPpb7GWvgRJvP5DmoarplRLAMgGHao5QPTTErNr-pvtLh9LNRnY8fA6bjTci";
+            demoMapBing.src = str;
+
+            str = "https://image.maps.cit.api.here.com/mia/1.6/mapview?c=48.678573799999995%2C26.5905205&ml=ukr&z=11&" + "app_id=Grmm3jTGABvuT6bZsWfd&app_code=3gu9PPxnDcHWpRpH_jnAIQ";
+            console.log(str);
+            demoMapHere.src = str;
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    coordsPlaceHolder.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    coordsPlaceHolder.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    coordsPlaceHolder.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    coordsPlaceHolder.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+    </script>
+</head>
+
+<body onload="init()">
+    <p>Current location is:<span id="coords"></span> </p>
+    <button onclick="getLocation()">Try It</button>
+    <div>
+        <img src="" alt="Image for Yandex Maps" id="demoMapYandex">
+        <img src="" alt="Image for Google Maps" id="demoMapGoogle">
+        <img src="" alt="Image for Bing Maps" id="demoMapBing">
+        <img src="" alt="Image for Here Maps" id="demoMapHere">
+    </div>
+</body>
+
+</html>
